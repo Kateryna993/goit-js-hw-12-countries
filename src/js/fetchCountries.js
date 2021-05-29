@@ -6,7 +6,6 @@ import debounce from 'lodash.debounce';
 import { error } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
-import '@pnotify/confirm/dist/PNotifyConfirm.css';
 
 import API from '../js/api-service.js';
 
@@ -18,9 +17,7 @@ refs.input.addEventListener('input', debounce(onInputCountrySearch, 500));
 
 function onInputCountrySearch(e) {
   let inputValue = refs.input.value;
-  API.fetchCountryByName(inputValue)
-    .then(renderCountriesSearch)
-    .catch(onFetchError)
+  API.fetchCountryByName(inputValue).then(renderCountriesSearch).catch(onFetchError);
 }
 
 function renderCountryCard(country) {
@@ -36,16 +33,15 @@ function renderCountriesList(country) {
 
 function renderCountriesSearch(country) {
   if (country.length > 10) {
+    removeInputValue();
     return onFetchError();
   } else if (country.length >= 2 && country.length <= 10) {
-   
+    removeInputValue();
     renderCountriesList(country);
-    
   } else {
-    removeInputValue()
+    removeInputValue();
     renderCountryCard(country);
   }
-  
 }
 
 function onFetchError() {
@@ -54,7 +50,7 @@ function onFetchError() {
   });
 }
 
-function removeInputValue() {
+function removeInputValueAndMarkup() {
   refs.cardContainer.innerHTML = '';
   refs.input.value = '';
 }
