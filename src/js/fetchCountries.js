@@ -38,6 +38,8 @@ function renderCountriesSearch(country) {
   } else if (country.length >= 2 && country.length <= 10) {
     removeInputValue();
     renderCountriesList(country);
+  } else if (country.status === 404) {
+    removeMarkup();
   } else {
     removeInputValue();
     renderCountryCard(country);
@@ -50,7 +52,10 @@ function onFetchError() {
   });
 }
 
-function removeInputValueAndMarkup() {
-  refs.cardContainer.innerHTML = '';
+function removeInputValue() {
   refs.input.value = '';
+}
+
+function removeMarkup() {
+  refs.cardContainer.innerHTML = '';
 }

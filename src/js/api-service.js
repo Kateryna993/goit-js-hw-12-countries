@@ -7,4 +7,4 @@ function fetchCountryByName(countryName) {
   });
 }
 
-export default { fetchCountryByName}
+export default { fetchCountryByName }
