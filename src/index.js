@@ -1,1 +1,1 @@
-import './js/fetchCountries.js'
+import './js/fetchCountries'

@@ -7,9 +7,9 @@ import { error } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
-import API from '../js/api-service.js';
+import API from './api-service';
 
-import getRefs from '../js/get-refs.js';
+import getRefs from './get-refs';
 
 const refs = getRefs();
 
